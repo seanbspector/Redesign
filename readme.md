@@ -1,6 +1,6 @@
 # Redesign
 
-Log in to Github and create an empty repo called redesign.
+Log in to Github and create an empty repo called components.
 
 ** Download the zip file **
 

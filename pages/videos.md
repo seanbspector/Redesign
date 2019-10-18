@@ -4,6 +4,8 @@ navTitle: Videos
 date: 2019-01-01
 ---
 
-## Coming soon.
+<section>
+  {% include components/video.html %}
+</section>
 
 [Home](/)

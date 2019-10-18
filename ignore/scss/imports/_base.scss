@@ -15,8 +15,14 @@ body {
   color: #fff;
 }
 
-img {
+img,
+video,
+iframe {
   width: 100%;
+}
+
+ul {
+  list-style: none;
 }
 
 a {
@@ -26,30 +32,6 @@ a {
 
 a:hover {
   text-decoration: underline;
-}
-
-nav {
-  background-color: #007eb6;
-}
-
-nav ul {
-  padding: 0;
-  list-style: none;
-  display: flex;
-  max-width: 980px;
-  margin: 0 auto;
-}
-
-nav li {
-  padding: 1rem;
-}
-
-nav ul a {
-  color: #fff;
-}
-
-nav .active a {
-  font-weight: bold;
 }
 
 .content {
