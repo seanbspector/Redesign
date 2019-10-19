@@ -1,9 +1,5 @@
 # Redesign
 
-Log in to Github and create an empty repo called components.
-
-** Download the zip file **
-
 - [Redesign](#redesign)
   - [Homework](#homework)
   - [Reading](#reading)
@@ -25,7 +21,7 @@ Log in to Github and create an empty repo called components.
     - [Updating the Video](#updating-the-video)
     - [Thinning the Templates](#thinning-the-templates)
     - [Final trim](#final-trim)
-  - [Image Carousel](#image-carousel)
+    - [Image Carousel](#image-carousel)
     - [Content Slider](#content-slider)
   - [Forms](#forms)
     - [Form Elements](#form-elements)
@@ -1107,7 +1103,7 @@ layout: layouts/layout.html
 {% include components/video-article.html %} {{ content }}
 ``` -->
 
-## Image Carousel
+### Image Carousel
 
 Add and new layout file `images.html` to layouts
 
