@@ -1,9 +1,5 @@
 # Redesign
 
-Log in to Github and create an empty repo called components.
-
-** Download the zip file **
-
 - [Redesign](#redesign)
   - [Homework](#homework)
   - [Reading](#reading)
@@ -23,9 +19,10 @@ Log in to Github and create an empty repo called components.
   - [Video Component](#video-component)
     - [Getting and Setting HTML Attributes](#getting-and-setting-html-attributes)
     - [Updating the Video](#updating-the-video)
+  - [Content and Templates Cleanup](#content-and-templates-cleanup)
     - [Thinning the Templates](#thinning-the-templates)
     - [Final trim](#final-trim)
-  - [Image Carousel](#image-carousel)
+    - [Image Carousel](#image-carousel)
     - [Content Slider](#content-slider)
   - [Forms](#forms)
     - [Form Elements](#form-elements)
@@ -941,10 +938,30 @@ section {
 }
 ```
 
-<!-- We want the video section to appear on only the home page and in the video page.
+<!-- HERE -->
 
-- Save out two copies of `layout.html` as `layouts/home.html` and `layouts/video.html`
-- Use these templates for rendering e.g.:
+## Content and Templates Cleanup
+
+We will create additional layouts for our Markdown templates.
+
+In `_includes/layouts/home.html`:
+
+```
+---
+layout: layouts/layout.html
+---
+
+<section>
+  <article>
+    {% include components/video-article.html %}
+  </article>
+  <aside>
+    {% include components/video-aside.html %}
+  </aside>
+</section>
+```
+
+Use these templates for rendering e.g.:
 
 `pages/home.md`
 
@@ -1105,9 +1122,9 @@ layout: layouts/layout.html
 ---
 
 {% include components/video-article.html %} {{ content }}
-``` -->
+```
 
-## Image Carousel
+### Image Carousel
 
 Add and new layout file `images.html` to layouts
 
