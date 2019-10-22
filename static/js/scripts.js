@@ -1,34 +1,41 @@
 'use strict';
 
 function clickHandlers() {
-  console.log(event.target);
   if (event.target.matches('#pull')) {
-    document.querySelector('body').classList.toggle('show-nav');
+    showMenu();
+    event.preventDefault();
+  }
+  if (event.target.matches('.content-video a')) {
+    videoSwitch();
+    event.preventDefault();
+  }
+  if (event.target.matches('.image-tn img')) {
+    runCarousel();
     event.preventDefault();
   }
 }
 
-// video
-const iFrame = document.querySelector('iframe');
-const videoLinks = document.querySelectorAll('.content-video a');
-videoLinks.forEach(videoLink =>
-  videoLink.addEventListener('click', selectVideo),
-);
+function runCarousel() {
+  const imageHref = event.target.parentNode.getAttribute('href');
+  const titleText = event.target.title;
+  document.querySelector('figure img').setAttribute('src', imageHref);
+  document.querySelector('figcaption').innerHTML = titleText;
+}
 
-function selectVideo() {
-  removeActiveClass(); // NEW
-  this.classList.add('active'); // NEW
+var showMenu = function() {
+  document.querySelector('body').classList.toggle('show-nav');
+};
+
+var videoSwitch = function() {
+  const iFrame = document.querySelector('iframe');
+  const videoLinks = document.querySelectorAll('.content-video a');
+  videoLinks.forEach(videoLink => videoLink.classList.remove('active'));
+  event.target.classList.add('active');
   const videoToPlay = event.target.getAttribute('href');
   iFrame.setAttribute('src', videoToPlay);
-  event.preventDefault();
-}
+};
 
-// NEW
-function removeActiveClass() {
-  videoLinks.forEach(videoLink => videoLink.classList.remove('active'));
-}
-// end video
-
+// BLOG
 var addContent = function(data) {
   var looped = '';
   for (let i = 0; i < data.results.length; i++) {
@@ -52,8 +59,6 @@ var nyt =
   'https://api.nytimes.com/svc/topstories/v2/nyregion.json?api-key=uQG4jhIEHKHKm0qMKGcTHqUgAolr1GM0';
 
 document.addEventListener('click', clickHandlers);
-
-// getData();
 
 if (document.querySelector('.blog')) {
   getData();
