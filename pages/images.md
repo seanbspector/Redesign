@@ -1,15 +1,9 @@
 ---
+layout: layouts/image.html
 pageTitle: Images
 navTitle: Images
-date: 2019-02-01
-images:
-  - apples.png
-  - apples-red.png
-  - apples-group.png
----
 
-{% for filename in images %}
-<img src="/static/img/{{ filename }}" alt="A nice picture of apples." srcset="">
-{% endfor %}
+date: 2019-02-01
+---
 
 [Home](/)
