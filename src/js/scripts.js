@@ -1,15 +1,28 @@
+import { getWithExpiry, setWithExpiry } from "./modules/localStorageHelpers.js";
+import clickHandlers from "./modules/clickHandlers.js";
+
+document.addEventListener("click", clickHandlers);
+
 // store the link plus the API key in a variable
-const key = "pb3WbIQux4hi9ZGGD38jXNA1K5gjBt6j";
+const key = "ykqdlBNRjsHIBnsqgxRYJ6Jdm9pUG3T6";
 const API = `https://api.nytimes.com/svc/topstories/v2/nyregion.json?api-key=${key}`;
+const storagePrefix = "nyt-autosave";
 
 function getStories() {
-  fetch(API)
-    .then((response) => response.json())
-    .then((data) => showData(data.results));
+  const stories = getWithExpiry(storagePrefix);
+  if (!stories) {
+    console.warn(" stories expired - fetching again ");
+    fetch(API)
+      .then((response) => response.json())
+      .then((data) => showData(data.results));
+  } else {
+    console.warn(" stories not expired - no fetching ");
+    document.querySelector(".stories").innerHTML = stories;
+  }
 }
 
 function showData(stories) {
-  var looped = stories
+  const looped = stories
     .map(
       (story) => `
     <div class="item">
@@ -27,6 +40,7 @@ function showData(stories) {
     .join("");
 
   document.querySelector(".stories").innerHTML = looped;
+  setWithExpiry(storagePrefix, looped, 1000 * 60 * 60);
 }
 
 if (document.querySelector(".home")) {
